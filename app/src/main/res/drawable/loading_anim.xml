@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <rotate android:drawable="@drawable/circular_arrow"
+            android:fromDegrees="360"
+            android:toDegrees="0"/>
+    </item>
+</layer-list>
