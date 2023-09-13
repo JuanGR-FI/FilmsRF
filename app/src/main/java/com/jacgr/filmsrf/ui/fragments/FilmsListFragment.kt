@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.jacgr.filmsrf.R
 import com.jacgr.filmsrf.application.FilmRFApp
 import com.jacgr.filmsrf.data.FilmRepository
 import com.jacgr.filmsrf.data.remote.model.FilmDto
@@ -45,6 +46,16 @@ class FilmsListFragment : Fragment() {
 
         repository = (requireActivity().application as FilmRFApp).repository
 
+        binding.btnReload.setOnClickListener {
+            binding.pbLoading.visibility = View.VISIBLE
+            binding.llConnectionError.visibility = View.GONE
+            tryConnection()
+        }
+
+        tryConnection()
+    }
+
+    private fun tryConnection() {
         lifecycleScope.launch {
             val call: Call<List<FilmDto>> = repository.getFilms()
 
@@ -59,7 +70,14 @@ class FilmsListFragment : Fragment() {
                     response.body()?.let { films ->
                         binding.rvFilms.apply {
                             layoutManager = LinearLayoutManager(requireContext())
-                            adapter = FilmsAdapter(films)
+                            adapter = FilmsAdapter(films){film ->
+                                film.id?.let {id ->
+                                    requireActivity().supportFragmentManager.beginTransaction()
+                                        .replace(R.id.fragment_container, FilmDetailFragment.newInstance(id))
+                                        .addToBackStack(null)
+                                        .commit()
+                                }
+                            }
                         }
                     }
 
@@ -71,14 +89,15 @@ class FilmsListFragment : Fragment() {
                     Toast.makeText(requireContext(), "No hay conexion", Toast.LENGTH_SHORT).show()
 
                     binding.pbLoading.visibility = View.GONE
+
+
+                    binding.llConnectionError.visibility = View.VISIBLE
                 }
 
             })
 
 
         }
-
-
     }
 
 

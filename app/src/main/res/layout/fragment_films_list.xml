@@ -14,6 +14,45 @@
         android:indeterminateDrawable="@drawable/loading_anim"
         android:indeterminateDuration="1500" />
 
+    <LinearLayout
+        android:id="@+id/llConnectionError"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="16dp"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center_horizontal"
+            android:contentDescription="Connection error"
+            android:src="@drawable/error" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/baloo_bhai_2"
+            android:text="Connection Error!"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btnReload"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#1F1F1F"
+            android:fontFamily="@font/baloo_bhai_2"
+            android:text="Reload connection"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvFilms"
         android:layout_width="match_parent"

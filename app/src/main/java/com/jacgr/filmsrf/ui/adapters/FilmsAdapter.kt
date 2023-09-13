@@ -7,7 +7,10 @@ import com.bumptech.glide.Glide
 import com.jacgr.filmsrf.data.remote.model.FilmDto
 import com.jacgr.filmsrf.databinding.FilmElementBinding
 
-class FilmsAdapter(private val films: List<FilmDto>): RecyclerView.Adapter<FilmsAdapter.ViewHolder>() {
+class FilmsAdapter(
+    private val films: List<FilmDto>,
+    private val onFilmClicked: (FilmDto) -> Unit
+): RecyclerView.Adapter<FilmsAdapter.ViewHolder>() {
 
     class ViewHolder(private val binding: FilmElementBinding): RecyclerView.ViewHolder(binding.root) {
         val ivThumbnail = binding.ivThumbnail
@@ -35,6 +38,10 @@ class FilmsAdapter(private val films: List<FilmDto>): RecyclerView.Adapter<Films
         Glide.with(holder.itemView.context)
             .load(film.thumbnail)
             .into(holder.ivThumbnail)
+
+        holder.itemView.setOnClickListener {
+            onFilmClicked(film)
+        }
 
     }
 

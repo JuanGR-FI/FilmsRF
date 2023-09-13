@@ -1,14 +1,162 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#0F0F0F"
     tools:context=".ui.fragments.FilmDetailFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ScrollView
+                android:id="@+id/scrollView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvTitle"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/baloo_bhai_2"
+                        android:gravity="center_horizontal"
+                        android:paddingBottom="10dp"
+                        android:textColor="#CBD5ED"
+                        android:textSize="30sp"
+                        android:textStyle="bold"
+                        tools:text="Title" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="10dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tvGenre"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/baloo_bhai_2"
+                                android:text="Genre"
+                                android:textColor="#F5DC53"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvDirector"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/baloo_bhai_2"
+                                android:text="Directed by:"
+                                android:textColor="#6F6F6F"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvYear"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/baloo_bhai_2"
+                                android:text="Year"
+                                android:textColor="#3FE0DD"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/tvStars"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/baloo_bhai_2"
+                                    android:text="5.0"
+                                    android:textColor="@color/white"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
+
+                                <ImageView
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginStart="8dp"
+                                    android:src="@drawable/ic_star"
+                                    app:tint="#ffd60a" />
+
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <com.makeramen.roundedimageview.RoundedImageView
+                            android:id="@+id/ivImage"
+                            android:layout_width="160dp"
+                            android:layout_height="240dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginEnd="20dp"
+                            app:riv_border_color="@color/white"
+                            app:riv_border_width="2dp"
+                            app:riv_corner_radius="10dp"
+                            tools:src="@drawable/popcorn_avatar" />
+
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:id="@+id/tvOverview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/baloo_bhai_2"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="15dp"
+                        android:paddingRight="15dp"
+                        android:paddingBottom="10dp"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        tools:text="Overview" />
+                </LinearLayout>
+            </ScrollView>
+
+            <ProgressBar
+                android:id="@+id/pbLoading"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerInParent="true"
+                android:indeterminateDrawable="@drawable/loading_anim"
+                android:indeterminateDuration="1500" />
+
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
