@@ -2,4 +2,11 @@
     <string name="app_name">FilmsRF</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="films_splash_screen_title">FILMS RF</string>
+    <string name="popcorn_image_description">Popcorn Image</string>
+    <string name="connection_error_description">Connection error</string>
+    <string name="connection_error">Connection Error!</string>
+    <string name="reload_connection_btn_text">Reload connection</string>
+    <string name="star_rate_description">Star rate</string>
+    <string name="directed_by">Directed by:\n%s</string>
 </resources>

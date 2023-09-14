@@ -4,12 +4,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0F0F0F"
+    android:background="@color/background_color"
     tools:context=".ui.fragments.FilmDetailFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
+        android:id="@+id/llConnectionError"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="16dp"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center_horizontal"
+            android:contentDescription="@string/connection_error_description"
+            android:src="@drawable/error" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/baloo_bhai_2"
+            android:text="@string/connection_error"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btnReload"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/reload_btn_text_color"
+            android:fontFamily="@font/baloo_bhai_2"
+            android:text="@string/reload_connection_btn_text"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -36,13 +77,13 @@
 
                     <TextView
                         android:id="@+id/tvTitle"
-                        android:layout_marginHorizontal="16dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
                         android:fontFamily="@font/baloo_bhai_2"
                         android:gravity="center_horizontal"
                         android:paddingBottom="10dp"
-                        android:textColor="#CBD5ED"
+                        android:textColor="@color/title_text_color"
                         android:textSize="30sp"
                         android:textStyle="bold"
                         tools:text="Title" />
@@ -65,8 +106,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/baloo_bhai_2"
-                                android:text="Genre"
-                                android:textColor="#F5DC53"
+                                tools:text="Genre"
+                                android:textColor="@color/genre_text_color"
                                 android:textSize="20sp"
                                 android:textStyle="bold" />
 
@@ -75,8 +116,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/baloo_bhai_2"
-                                android:text="Directed by:"
-                                android:textColor="#6F6F6F"
+                                tools:text="Directed by:"
+                                android:textColor="@color/director_text_color"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
 
@@ -85,8 +126,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/baloo_bhai_2"
-                                android:text="Year"
-                                android:textColor="#3FE0DD"
+                                tools:text="Year"
+                                android:textColor="@color/year_text_color"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
 
@@ -100,7 +141,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/baloo_bhai_2"
-                                    android:text="5.0"
+                                    tools:text="5.0"
                                     android:textColor="@color/white"
                                     android:textSize="18sp"
                                     android:textStyle="bold" />
@@ -111,7 +152,8 @@
                                     android:layout_gravity="center_vertical"
                                     android:layout_marginStart="8dp"
                                     android:src="@drawable/ic_star"
-                                    app:tint="#ffd60a" />
+                                    app:tint="@color/star_icon_tint"
+                                    android:contentDescription="@string/star_rate_description" />
 
 
                             </LinearLayout>
@@ -147,16 +189,16 @@
                 </LinearLayout>
             </ScrollView>
 
-            <ProgressBar
-                android:id="@+id/pbLoading"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_centerInParent="true"
-                android:indeterminateDrawable="@drawable/loading_anim"
-                android:indeterminateDuration="1500" />
-
         </RelativeLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ProgressBar
+        android:id="@+id/pbLoading"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:indeterminateDrawable="@drawable/loading_anim"
+        android:indeterminateDuration="1500" />
 
 </FrameLayout>

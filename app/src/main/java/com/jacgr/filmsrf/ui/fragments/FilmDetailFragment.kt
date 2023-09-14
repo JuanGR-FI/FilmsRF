@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
+import com.jacgr.filmsrf.R
 import com.jacgr.filmsrf.application.FilmRFApp
 import com.jacgr.filmsrf.data.FilmRepository
 import com.jacgr.filmsrf.data.remote.model.FilmDetailDto
@@ -35,7 +36,7 @@ class FilmDetailFragment : Fragment() {
         arguments?.let {args ->
             filmId = args.getString(FILM_ID)
 
-            Log.d(Constants.LOGTAG, "Id recibido: $filmId")
+            //Log.d(Constants.LOGTAG, "Id recibido: $filmId")
 
         }
     }
@@ -54,6 +55,12 @@ class FilmDetailFragment : Fragment() {
 
         repository = (requireActivity().application as FilmRFApp).repository
 
+        binding.btnReload.setOnClickListener {
+            binding.pbLoading.visibility = View.VISIBLE
+            binding.llConnectionError.visibility = View.GONE
+            tryConnection()
+        }
+
         tryConnection()
 
     }
@@ -69,14 +76,16 @@ class FilmDetailFragment : Fragment() {
                         response: Response<FilmDetailDto>
                     ) {
 
-                        Log.d(Constants.LOGTAG, "Respuesta detail: : ${response.body()}")
+                        //Log.d(Constants.LOGTAG, "Respuesta detail: : ${response.body()}")
 
                         binding.apply {
                             pbLoading.visibility = View.GONE
 
+                            clContent.visibility = View.VISIBLE
+
                             tvTitle.text = response.body()?.title
                             tvGenre.text = response.body()?.genre
-                            tvDirector.text = response.body()?.director
+                            tvDirector.text = getString(R.string.directed_by, response.body()?.director)
                             tvYear.text = response.body()?.year
                             tvStars.text = response.body()?.stars
                             tvOverview.text = response.body()?.overview
@@ -90,7 +99,9 @@ class FilmDetailFragment : Fragment() {
 
                     override fun onFailure(call: Call<FilmDetailDto>, t: Throwable) {
                         binding.pbLoading.visibility = View.GONE
-                        Toast.makeText(requireActivity(), "No hay conexion", Toast.LENGTH_SHORT).show()
+                        binding.llConnectionError.visibility = View.VISIBLE
+
+                        //Toast.makeText(requireActivity(), "No hay conexion", Toast.LENGTH_SHORT).show()
                     }
 
                 })

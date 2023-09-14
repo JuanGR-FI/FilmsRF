@@ -11,7 +11,7 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="#1A1A1A">
+        android:backgroundTint="@color/card_background">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -40,8 +40,8 @@
                     android:id="@+id/tvTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Title"
-                    android:textColor="#CBD5ED"
+                    tools:text="Title"
+                    android:textColor="@color/title_text_color"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -50,8 +50,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Science Fiction"
-                    android:textColor="#F5DC53"
+                    tools:text="Science Fiction"
+                    android:textColor="@color/genre_text_color"
                     android:textSize="18sp" />
 
                 <TextView
@@ -59,8 +59,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="2023"
-                    android:textColor="#3FE0DD"
+                    tools:text="2023"
+                    android:textColor="@color/year_text_color"
                     android:textSize="16sp" />
 
             </LinearLayout>

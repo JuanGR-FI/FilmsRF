@@ -65,7 +65,7 @@ class FilmsListFragment : Fragment() {
                     response: Response<List<FilmDto>>
                 ) {
                     binding.pbLoading.visibility = View.GONE
-                    Log.d(Constants.LOGTAG, "Respuesta del servidor: ${response.body()}")
+                    //Log.d(Constants.LOGTAG, "Respuesta del servidor: ${response.body()}")
 
                     response.body()?.let { films ->
                         binding.rvFilms.apply {
@@ -85,8 +85,8 @@ class FilmsListFragment : Fragment() {
                 }
 
                 override fun onFailure(call: Call<List<FilmDto>>, t: Throwable) {
-                    Log.d(Constants.LOGTAG, "Error: ${t.message}")
-                    Toast.makeText(requireContext(), "No hay conexion", Toast.LENGTH_SHORT).show()
+                    //Log.d(Constants.LOGTAG, "Error: ${t.message}")
+                    //Toast.makeText(requireContext(), "No hay conexion", Toast.LENGTH_SHORT).show()
 
                     binding.pbLoading.visibility = View.GONE
 
