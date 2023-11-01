@@ -9,4 +9,6 @@
     <string name="reload_connection_btn_text">Reload connection</string>
     <string name="star_rate_description">Star rate</string>
     <string name="directed_by">Directed by:\n%s</string>
+    <string name="trailer_subtitle">Trailer:</string>
+    <string name="overview_subtitle">Overview:</string>
 </resources>

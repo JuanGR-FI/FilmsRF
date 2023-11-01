@@ -1,11 +1,14 @@
 package com.jacgr.filmsrf.ui.fragments
 
+import android.media.MediaPlayer
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.MediaController
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
@@ -89,6 +92,9 @@ class FilmDetailFragment : Fragment() {
                             tvYear.text = response.body()?.year
                             tvStars.text = response.body()?.stars
                             tvOverview.text = response.body()?.overview
+
+                            vvVideo.setVideoURI(Uri.parse(response.body()?.video))
+                            binding.vvVideo.start()
 
                             Glide.with(requireContext())
                                 .load(response.body()?.image)

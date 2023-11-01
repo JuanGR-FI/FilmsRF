@@ -1,5 +1,6 @@
 package com.jacgr.filmsrf.ui.fragments
 
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -27,6 +28,8 @@ class FilmsListFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var repository: FilmRepository
+
+    private lateinit var mp: MediaPlayer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,6 +75,8 @@ class FilmsListFragment : Fragment() {
                             layoutManager = LinearLayoutManager(requireContext())
                             adapter = FilmsAdapter(films){film ->
                                 film.id?.let {id ->
+                                    mp = MediaPlayer.create(requireContext(), R.raw.pop)
+                                    mp.start()
                                     requireActivity().supportFragmentManager.beginTransaction()
                                         .replace(R.id.fragment_container, FilmDetailFragment.newInstance(id))
                                         .addToBackStack(null)

@@ -7,5 +7,6 @@ data class FilmDetailDto(
     var genre: String? = null,
     var year: String? = null,
     var stars: String? = null,
-    var overview: String? = null
+    var overview: String? = null,
+    var video: String? = null
 )

@@ -50,7 +50,7 @@
         android:id="@+id/clContent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -106,30 +106,30 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/baloo_bhai_2"
-                                tools:text="Genre"
                                 android:textColor="@color/genre_text_color"
                                 android:textSize="20sp"
-                                android:textStyle="bold" />
+                                android:textStyle="bold"
+                                tools:text="Genre" />
 
                             <TextView
                                 android:id="@+id/tvDirector"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/baloo_bhai_2"
-                                tools:text="Directed by:"
                                 android:textColor="@color/director_text_color"
                                 android:textSize="18sp"
-                                android:textStyle="bold" />
+                                android:textStyle="bold"
+                                tools:text="Directed by:" />
 
                             <TextView
                                 android:id="@+id/tvYear"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/baloo_bhai_2"
-                                tools:text="Year"
                                 android:textColor="@color/year_text_color"
                                 android:textSize="18sp"
-                                android:textStyle="bold" />
+                                android:textStyle="bold"
+                                tools:text="Year" />
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
@@ -141,19 +141,19 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/baloo_bhai_2"
-                                    tools:text="5.0"
                                     android:textColor="@color/white"
                                     android:textSize="18sp"
-                                    android:textStyle="bold" />
+                                    android:textStyle="bold"
+                                    tools:text="5.0" />
 
                                 <ImageView
                                     android:layout_width="20dp"
                                     android:layout_height="20dp"
                                     android:layout_gravity="center_vertical"
                                     android:layout_marginStart="8dp"
+                                    android:contentDescription="@string/star_rate_description"
                                     android:src="@drawable/ic_star"
-                                    app:tint="@color/star_icon_tint"
-                                    android:contentDescription="@string/star_rate_description" />
+                                    app:tint="@color/star_icon_tint" />
 
 
                             </LinearLayout>
@@ -173,9 +173,7 @@
 
                     </LinearLayout>
 
-
                     <TextView
-                        android:id="@+id/tvOverview"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/baloo_bhai_2"
@@ -183,9 +181,43 @@
                         android:paddingTop="15dp"
                         android:paddingRight="15dp"
                         android:paddingBottom="10dp"
+                        android:text="@string/trailer_subtitle"
+                        android:textColor="@color/white"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+                    <VideoView
+                        android:id="@+id/vvVideo"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/baloo_bhai_2"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="15dp"
+                        android:paddingRight="15dp"
+                        android:paddingBottom="10dp"
+                        android:text="@string/overview_subtitle"
+                        android:textColor="@color/white"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvOverview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/baloo_bhai_2"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="10dp"
+                        android:paddingRight="15dp"
+                        android:paddingBottom="10dp"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         tools:text="Overview" />
+
+
                 </LinearLayout>
             </ScrollView>
 
