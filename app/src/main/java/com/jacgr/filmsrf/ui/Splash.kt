@@ -19,7 +19,7 @@ class Splash : AppCompatActivity() {
             mp = MediaPlayer.create(this, R.raw.popcorn_notification)
             mp.start()
             Thread.sleep(1500)
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, Login::class.java))
             finish()
         }
 

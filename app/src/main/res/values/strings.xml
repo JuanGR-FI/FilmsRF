@@ -11,4 +11,10 @@
     <string name="directed_by">Directed by:\n%s</string>
     <string name="trailer_subtitle">Trailer:</string>
     <string name="overview_subtitle">Overview:</string>
+    <string name="email_hint_text">Email</string>
+    <string name="password_hint_text">Password</string>
+    <string name="sign_in_btn_text">SIGN IN</string>
+    <string name="sign_up_btn_text">SIGN UP</string>
+    <string name="inavalid_email">Please enter a valid email</string>
+    <string name="invalid_password">Please enter a password of at least 6 characters</string>
 </resources>

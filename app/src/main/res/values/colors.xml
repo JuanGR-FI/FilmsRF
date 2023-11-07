@@ -16,4 +16,10 @@
     <color name="reload_btn_text_color">#1F1F1F</color>
     <color name="director_text_color">#6F6F6F</color>
     <color name="star_icon_tint">#ffd60a</color>
+
+    <color name="hint_text_color">#CED4DA</color>
+    <color name="light_purple">#C8B6FF</color>
+    <color name="light_blue">#BBD0FF</color>
+
+    <color name="snackbar_error">#cc444b</color>
 </resources>
