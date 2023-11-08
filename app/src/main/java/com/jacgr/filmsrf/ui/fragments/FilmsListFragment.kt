@@ -1,5 +1,6 @@
 package com.jacgr.filmsrf.ui.fragments
 
+import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
@@ -15,6 +16,7 @@ import com.jacgr.filmsrf.application.FilmRFApp
 import com.jacgr.filmsrf.data.FilmRepository
 import com.jacgr.filmsrf.data.remote.model.FilmDto
 import com.jacgr.filmsrf.databinding.FragmentFilmsListBinding
+import com.jacgr.filmsrf.ui.Login
 import com.jacgr.filmsrf.ui.adapters.FilmsAdapter
 import com.jacgr.filmsrf.util.Constants
 import kotlinx.coroutines.launch
@@ -31,8 +33,12 @@ class FilmsListFragment : Fragment() {
 
     private lateinit var mp: MediaPlayer
 
+    //private lateinit var firebaseAuth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        //firebaseAuth = FirebaseAuth.getInstance()
     }
 
     override fun onCreateView(
@@ -47,12 +53,22 @@ class FilmsListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //val userEmail = firebaseAuth.currentUser?.email
+
+        //binding.tvUserEmail.text = userEmail
+
         repository = (requireActivity().application as FilmRFApp).repository
 
         binding.btnReload.setOnClickListener {
             binding.pbLoading.visibility = View.VISIBLE
             binding.llConnectionError.visibility = View.GONE
             tryConnection()
+        }
+
+        binding.btnSignOut.setOnClickListener {
+            //firebaseAuth.signOut()
+            activity?.startActivity(Intent(requireContext(), Login::class.java))
+            activity?.finish()
         }
 
         tryConnection()
