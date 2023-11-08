@@ -22,4 +22,5 @@
     <color name="light_blue">#BBD0FF</color>
 
     <color name="snackbar_error">#cc444b</color>
+    <color name="orange_snackbar">#ff7b00</color>
 </resources>

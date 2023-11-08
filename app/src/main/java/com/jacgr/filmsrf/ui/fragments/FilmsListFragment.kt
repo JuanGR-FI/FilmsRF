@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.auth.FirebaseAuth
 import com.jacgr.filmsrf.R
 import com.jacgr.filmsrf.application.FilmRFApp
 import com.jacgr.filmsrf.data.FilmRepository
@@ -33,12 +34,12 @@ class FilmsListFragment : Fragment() {
 
     private lateinit var mp: MediaPlayer
 
-    //private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        //firebaseAuth = FirebaseAuth.getInstance()
+        firebaseAuth = FirebaseAuth.getInstance()
     }
 
     override fun onCreateView(
@@ -53,9 +54,9 @@ class FilmsListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //val userEmail = firebaseAuth.currentUser?.email
+        val userEmail = firebaseAuth.currentUser?.email
 
-        //binding.tvUserEmail.text = userEmail
+        binding.tvUserEmail.text = userEmail
 
         repository = (requireActivity().application as FilmRFApp).repository
 
@@ -66,7 +67,7 @@ class FilmsListFragment : Fragment() {
         }
 
         binding.btnSignOut.setOnClickListener {
-            //firebaseAuth.signOut()
+            firebaseAuth.signOut()
             activity?.startActivity(Intent(requireContext(), Login::class.java))
             activity?.finish()
         }

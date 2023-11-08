@@ -4,6 +4,7 @@ import android.content.Intent
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.google.firebase.auth.FirebaseAuth
 import com.jacgr.filmsrf.R
 import kotlin.concurrent.thread
 
@@ -19,8 +20,14 @@ class Splash : AppCompatActivity() {
             mp = MediaPlayer.create(this, R.raw.popcorn_notification)
             mp.start()
             Thread.sleep(1500)
-            startActivity(Intent(this, Login::class.java))
-            finish()
+            if(FirebaseAuth.getInstance().currentUser != null){
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
+            }else{
+                startActivity(Intent(this, Login::class.java))
+                finish()
+            }
+
         }
 
     }
