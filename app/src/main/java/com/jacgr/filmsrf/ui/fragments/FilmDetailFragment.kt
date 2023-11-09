@@ -1,5 +1,6 @@
 package com.jacgr.filmsrf.ui.fragments
 
+import android.content.Intent
 import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
@@ -12,11 +13,19 @@ import android.widget.MediaController
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import com.jacgr.filmsrf.R
 import com.jacgr.filmsrf.application.FilmRFApp
 import com.jacgr.filmsrf.data.FilmRepository
 import com.jacgr.filmsrf.data.remote.model.FilmDetailDto
 import com.jacgr.filmsrf.databinding.FragmentFilmDetailBinding
+import com.jacgr.filmsrf.ui.MapActivity
 import com.jacgr.filmsrf.util.Constants
 import kotlinx.coroutines.launch
 import retrofit2.Call
@@ -38,9 +47,6 @@ class FilmDetailFragment : Fragment() {
 
         arguments?.let {args ->
             filmId = args.getString(FILM_ID)
-
-            //Log.d(Constants.LOGTAG, "Id recibido: $filmId")
-
         }
     }
 
@@ -65,7 +71,11 @@ class FilmDetailFragment : Fragment() {
         }
 
         tryConnection()
+    }
 
+    override fun onResume() {
+        super.onResume()
+        binding.vvVideo.start()
     }
 
     private fun tryConnection(){
@@ -93,6 +103,15 @@ class FilmDetailFragment : Fragment() {
                             tvStars.text = response.body()?.stars
                             tvOverview.text = response.body()?.overview
 
+                            tvMapLink.setOnClickListener {
+                                val mapIntent = Intent(requireContext(), MapActivity::class.java).apply {
+                                    putExtra(Constants.EXTRA_STUDIO_NAME, response.body()?.studio)
+                                    putExtra(Constants.EXTRA_LATITUDE, response.body()?.latitude)
+                                    putExtra(Constants.EXTRA_LONGITUDE, response.body()?.longitude)
+                                }
+                                startActivity(mapIntent)
+                            }
+
                             vvVideo.setVideoURI(Uri.parse(response.body()?.video))
                             binding.vvVideo.start()
 
@@ -106,8 +125,6 @@ class FilmDetailFragment : Fragment() {
                     override fun onFailure(call: Call<FilmDetailDto>, t: Throwable) {
                         binding.pbLoading.visibility = View.GONE
                         binding.llConnectionError.visibility = View.VISIBLE
-
-                        //Toast.makeText(requireActivity(), "No hay conexion", Toast.LENGTH_SHORT).show()
                     }
 
                 })

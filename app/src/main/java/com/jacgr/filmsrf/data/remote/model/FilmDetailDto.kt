@@ -8,5 +8,8 @@ data class FilmDetailDto(
     var year: String? = null,
     var stars: String? = null,
     var overview: String? = null,
-    var video: String? = null
+    var video: String? = null,
+    var studio: String? = null,
+    var latitude: String? = null,
+    var longitude: String? = null
 )

@@ -36,4 +36,6 @@
     <string name="error_sending_mail">Link could not be sent: %s</string>
     <string name="verification_mail_sent">Verification link has been sent</string>
     <string name="error_verification_email">Error sending verification email</string>
+    <string name="studio_location">Studio Location:</string>
+    <string name="click_here_to_see_the_map">Click here to see the map!</string>
 </resources>
